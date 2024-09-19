@@ -1,0 +1,32 @@
+// mod toy {
+//     pub fn run() {
+//         println!("run toy");
+//     }
+// }
+
+mod toy1 {
+    include!("./toy_implements.rs");
+}
+#[path="./toy_implements.rs"]
+mod toy2;
+
+
+
+mod toy;
+mod foo;
+use foo as othertoy;
+// mod adc; //单独文件不能直接使用引入
+// use abc::print_abc;
+
+//引入 restaurant 库crate中的代码
+// restaurant 是 库crate的名称，通常与包名相同
+use restaurant::*;
+
+fn main() {
+    println!("Hello, world!");
+    toy1::run();
+    toy2::run();
+    toy::run();
+    othertoy::say_hi();
+    // print_abc();
+}
